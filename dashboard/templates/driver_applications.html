@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Driver Application Records</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>County</th>
+                <th>Driving Class</th>
+                <th>Status</th>
+                <th>Action</th> <!-- Add Action column for the edit button -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+                <tr>
+                    <td>{{ application.first_name }} {{ application.last_name }}</td>
+                    <td>{{ application.age }}</td>
+                    <td>{{ application.get_gender_display }}</td>
+                    <td>{{ application.county }}</td>
+                    <td>{{ application.driving_class }}</td>
+                    <td>{{ application.status }}</td>
+                    <td>
+                        <a href="{% url 'edit_application' application.id %}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center">No driver applications found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

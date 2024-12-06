@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Roadtest Booking Records</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Customer Name</th>
+                <th>Phone Number</th>
+                <th>ID Number</th>
+                <th>KRA Pin</th>
+                <th>Car Name</th>
+                <th>Road Test Date</th>
+                <th>Road Test Confirmed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for purchase in purchases %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ purchase.customer_name }}</td>
+                    <td>{{ purchase.phone_number }}</td>
+                    <td>{{ purchase.id_number }}</td>
+                    <td>{{ purchase.kra_pin }}</td>
+                    <td>{{ purchase.car.name }}</td>
+                    <td>{{ purchase.road_test_date }}</td>
+                    <td>
+                        {% if purchase.road_test_confirmed %}
+                            <span class="badge badge-success">Confirmed</span>
+                        {% else %}
+                            <span class="badge badge-danger">Pending</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="8" class="text-center">No purchases found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

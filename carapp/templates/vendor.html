@@ -1,0 +1,48 @@
+{% load static %}
+<h3 style="text-align: center; color: orange">Our Brands</h3>
+<div id="teamCarousel" class="carousel slide" data-ride="carousel" style="margin-top: 30px">
+    <ol class="carousel-indicators">
+        <li data-target="#teamCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#teamCarousel" data-slide-to="1"></li>
+        <li data-target="#teamCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="d-flex flex-wrap justify-content-around">
+                <img src="{% static 'img/ford.png' %}" class="img-thumbnail" alt="Ford" style="width: 80px; height: auto;">
+                <img src="{% static 'img/benz.png' %}" class="img-thumbnail" alt="Mercedes" style="width: 80px; height: auto;">
+                <img src="{% static 'img/lexus.png' %}" class="img-thumbnail" alt="Lexus" style="width: 80px; height: auto;">
+                <img src="{% static 'img/kia.png' %}" class="img-thumbnail" alt="KIA" style="width: 80px; height: auto;">
+                <img src="{% static 'img/vw.png' %}" class="img-thumbnail" alt="Volkswagen" style="width: 80px; height: auto;">
+                <img src="{% static 'img/mitsubishi.png' %}" class="img-thumbnail" alt="Mitsubishi" style="width: 80px; height: auto;">
+                <img src="{% static 'img/jeep.png' %}" class="img-thumbnail" alt="Jeep" style="width: 80px; height: auto;">
+                <img src="{% static 'img/suzuki.png' %}" class="img-thumbnail" alt="Suzuki" style="width: 80px; height: auto;">
+                <img src="{% static 'img/landrover.png' %}" class="img-thumbnail" alt="Land rover" style="width: 80px; height: auto;">
+                <img src="{% static 'img/honda.png' %}" class="img-thumbnail" alt="Honda" style="width: 80px; height: auto;">
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <div class="d-flex flex-wrap justify-content-around">
+                <img src="{% static 'img/renault.png' %}" class="img-thumbnail" alt="Renault" style="width: 80px; height: auto;">
+                <img src="{% static 'img/volvo.png' %}" class="img-thumbnail" alt="Volvo" style="width: 80px; height: auto;">
+                <img src="{% static 'img/porsche.png' %}" class="img-thumbnail" alt="Porsche" style="width: 80px; height: auto;">
+                <img src="{% static 'img/bmw.png' %}" class="img-thumbnail" alt="BMW" style="width: 80px; height: auto;">
+                <img src="{% static 'img/mazda.png' %}" class="img-thumbnail" alt="Mazda" style="width: 80px; height: auto;">
+                <img src="{% static 'img/toyota.png' %}" class="img-thumbnail" alt="Toyota" style="width: 80px; height: auto;">
+                <img src="{% static 'img/nissan.png' %}" class="img-thumbnail" alt="Nissan" style="width: 80px; height: auto;">
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#teamCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#teamCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+

@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="formbody">
+        <div class="form-container">
+    <h1>{{ form.instance.pk|yesno:"Edit Car,Add New Car" }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-warning mt-3">Save</button>
+    </form>
+    <a href="{% url 'car_list' %}">Back to List</a>
+</div>
+    </div>
+
+
+{% endblock %}

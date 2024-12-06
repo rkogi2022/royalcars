@@ -1,0 +1,14 @@
+{% extends 'page.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>Payment Prompt Sent</h2>
+        <p>We have sent a payment prompt to your phone. Please enter your M-Pesa PIN to complete the booking deposit payment.</p>
+        <p>If you don't see the prompt, please check your network or cancel and try again.</p>
+        <p>Once you complete the payment, you will receive a confirmation.</p>
+        <p>Car: {{ car.name }}</p>
+        <p>Booking ID: {{ booking.id }}</p>
+        <p>Phone Number: {{ phone_number }}</p>
+        <a href="{% url 'cardetails' %}" class="btn btn-danger">Cancel Booking</a>
+    </div>
+{% endblock %}

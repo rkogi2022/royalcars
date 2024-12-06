@@ -1,0 +1,29 @@
+{% load static %}
+<!-- Navbar 1 Start (For Logged-In Users, includes logout icon) -->
+<div class="container-fluid position-relative nav-bar p-0">
+    <div class="position-relative px-lg-5" style="z-index: 9;">
+        <nav class="navbar navbar-expand-lg navbar-dark py-3 py-lg-0 pl-3 pl-lg-5" style="background-color: rgba(0, 0, 0, 0.6);">
+            <a href="" class="navbar-brand d-flex align-items-center">
+                <img src="{% static 'bg-banner.jpg' %}" alt="Royal Cars" style="width: 50px; height: auto; border-radius: 50%; margin-right: 10px;">
+                <h1 class="text-uppercase text-warning mb-1">Royal Cars</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                <div class="navbar-nav ml-auto py-0">
+                    <a href="{% url 'car_list' %}" class="nav-item nav-link active">Cars</a>
+                    <a href="{% url 'car_bookings' %}" class="nav-item nav-link">Car Bookings</a>
+                    <a href="{% url 'purchase_list' %}" class="nav-item nav-link">Roadtest Bookings</a>
+                    <a href="{% url 'ride_hailing_list' %}" class="nav-item nav-link">Ride Hailers</a>
+                    <a href="{% url 'driver_applications' %}" class="nav-item nav-link">Drivers Applications</a>
+                    <a href="{% url 'newsletter_list' %}" class="nav-item nav-link">Newsletter Subscribers</a>
+                    <a href="{% url 'staff_list' %}" class="nav-item nav-link">Staff</a>
+                    <a href="#" class="nav-item nav-link">
+                        <i class="fas fa-sign-out-alt ml-3" style="color: #0a0a11"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

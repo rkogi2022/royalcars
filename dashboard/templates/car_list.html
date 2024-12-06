@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+
+    <title>Find Your Car</title>
+<h1 class="text-center mb-5">CAR CATALOGUE</h1>
+<div class="container-fluid mt-5">
+
+    <a href="{% url 'car_create' %}" style="
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+">Add New Car</a>
+        <div class="row justify-content-center">
+            {% for car in cars %}
+               <div class="col-lg-4 col-md-4 col-sm-4 mb-4 d-flex align-items-stretch">
+                    <div class="rent-item car-card w-100">
+                        <div class="icon-buttons">
+                            <a href="{% url 'car_edit' car.pk %}" title="Edit"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'car_delete' car.pk %}" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                        <img class="img-fluid mb-3" src="{{ car.image.url }}" alt="{{ car.name }}">
+                        <h4 class="text-uppercase mb-3">{{ car.name }}</h4>
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="px-2">
+                                <i class="fa fa-car text-warning mr-1"></i>
+                                <span>{{ car.year }}</span>
+                            </div>
+                            <div class="px-2 border-left border-right">
+                                <i class="fa fa-cogs text-warning mr-1"></i>
+                                <span>{{ car.get_automation_display }}</span>
+                            </div>
+                            <div class="px-2">
+                                <i class="fa fa-road text-warning mr-1"></i>
+                                <span>Ksh {{ car.price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

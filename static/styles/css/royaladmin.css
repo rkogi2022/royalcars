@@ -1,0 +1,70 @@
+        /*styling the carlistpage*/
+        .rent-item {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: box-shadow 0.3s;
+            height: 100%;  /* Equal height for all cards */
+        }
+        .rent-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .rent-item:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .car-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .icon-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .icon-buttons a {
+            color: red;
+            margin: 0 5px;
+            font-size: 1.2rem;
+        }
+        .icon-buttons a:hover {
+            color: #f39c12;
+        }
+        /*styling add new car form*/
+        .formbody{
+            background: url('{% static "img/bang.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .form-container {
+        max-width: 600px;
+        margin: 50px auto; /* Centers the form */
+        padding: 30px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .form-container h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    .form-container button {
+        width: 100%;
+        background-color: #f39c12;
+        border: none;
+    }
+    .form-container a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #007bff;
+        text-decoration: none;
+    }
+    .form-container a:hover {
+        text-decoration: underline;
+    }

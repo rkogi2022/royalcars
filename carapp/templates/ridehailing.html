@@ -1,0 +1,62 @@
+{% extends "page.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Book {{ car.name }}</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="pickup_location">Pickup Location</label>
+            <input type="text" id="pickup_location" name="pickup_location" class="form-control" required>
+            <input type="hidden" id="pickup_latitude" name="pickup_latitude">
+            <input type="hidden" id="pickup_longitude" name="pickup_longitude">
+        </div>
+
+        <div class="form-group">
+            <label for="dropoff_location">Dropoff Location</label>
+            <input type="text" id="dropoff_location" name="dropoff_location" class="form-control" required>
+            <input type="hidden" id="dropoff_latitude" name="dropoff_latitude">
+            <input type="hidden" id="dropoff_longitude" name="dropoff_longitude">
+        </div>
+
+        <div class="form-group">
+            <label for="pickup_date">Pickup Date</label>
+            <input type="date" id="pickup_date" name="pickup_date" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pickup_time">Pickup Time</label>
+            <input type="time" id="pickup_time" name="pickup_time" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Booking</button>
+    </form>
+</div>
+
+<!-- Include Google Maps JavaScript API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWqJPV-qdTeVDp-wOKhyzXf4nmg9oFYIM&libraries=places"></script>
+<script>
+// Initialize Google Places Autocomplete
+function initAutocomplete() {
+    var pickupInput = document.getElementById('pickup_location');
+    var dropoffInput = document.getElementById('dropoff_location');
+
+    var pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput);
+    var dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput);
+
+    pickupAutocomplete.addListener('place_changed', function() {
+        var place = pickupAutocomplete.getPlace();
+        document.getElementById('pickup_latitude').value = place.geometry.location.lat();
+        document.getElementById('pickup_longitude').value = place.geometry.location.lng();
+    });
+
+    dropoffAutocomplete.addListener('place_changed', function() {
+        var place = dropoffAutocomplete.getPlace();
+        document.getElementById('dropoff_latitude').value = place.geometry.location.lat();
+        document.getElementById('dropoff_longitude').value = place.geometry.location.lng();
+    });
+}
+
+window.onload = initAutocomplete;
+</script>
+{% endblock %}

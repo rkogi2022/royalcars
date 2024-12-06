@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <!-- Rent A Car Start -->
+<div class="container-fluid mt-5">
+    <h1 class="text-center mb-5">OUR CARS</h1>
+    <div class="row justify-content-center">
+        {% for car in cars %}
+            <div class="col-lg-4 col-md-4 col-sm-4 mb-4 d-flex align-items-stretch">
+                <div class="rent-item car-card w-100">
+                    <img class="img-fluid mb-3" src="{{ car.image.url }}" alt="{{ car.name }}">
+                    <h4 class="text-uppercase mb-3">{{ car.name }}</h4>
+                    <div class="d-flex justify-content-center mb-3">
+                        <div class="px-2">
+                            <i class="fa fa-car text-warning mr-1"></i>
+                            <span>{{ car.year }}</span>
+                        </div>
+                        <div class="px-2 border-left border-right">
+                            <i class="fa fa-cogs text-warning mr-1"></i>
+                            <span>{{ car.get_automation_display }}</span>
+                        </div>
+                        <div class="px-2">
+                            <i class="fa fa-road text-warning mr-1"></i>
+                            <span>Ksh {{ car.price }}</span>
+                        </div>
+                    </div>
+                   <div class="d-flex justify-content-between mb-3">
+                        <a class="btn btn-warning px-3" href="{% url 'book_car' car.id %}">Ksh {{ car.rental_price }}/Day</a>
+                       <a class="btn btn-primary px-3" href="{% url 'ridehail' car.id %}">Book Car</a>
+                        <a class="btn btn-success px-3" href="{% url 'book_road_test' car.id %}">Purchase Car</a>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+    <!-- Rent A Car End -->
+<!-- Banner Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row mx-0">
+                <div class="col-lg-6 px-0">
+                    <div class="px-5 bg-secondary d-flex align-items-center justify-content-between" style="height: 350px;">
+                        <img class="img-fluid flex-shrink-0 ml-n5 w-50 mr-4" src="{% static 'img/banner-left.png' %}" alt="">
+                        <div class="text-right">
+                            <h3 class="text-uppercase text-light mb-3">Want to be driver?</h3>
+                            <p class="mb-4" style="color:white;">Join our team and drive your career forward with exciting opportunities!</p>
+                            <a class="btn btn-warning py-2 px-4" href="{% url 'driver-apply' %}">Apply Today</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 px-0">
+                    <div class="px-5 bg-dark d-flex align-items-center justify-content-between" style="height: 350px;">
+                        <div class="text-left">
+                            <h3 class="text-uppercase text-light mb-3">Looking for a car?</h3>
+                            <p class="mb-4" style="color:white;">Find your perfect ride with us, where comfort meets convenience.</p>
+                            <a class="btn btn-warning py-2 px-4" href="">Book Car</a>
+                        </div>
+                        <img class="img-fluid flex-shrink-0 mr-n5 w-50 ml-4" src="{% static 'img/banner-right.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner End -->
+
+{% endblock %}

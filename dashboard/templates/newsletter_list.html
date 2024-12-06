@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Newsletter Subscribers</h2>
+    <ul class="list-group">
+        {% for subscriber in subscribers %}
+            <li class="list-group-item">{{ subscriber.email }}</li>
+        {% empty %}
+            <li class="list-group-item text-center">No subscribers found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

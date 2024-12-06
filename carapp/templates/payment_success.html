@@ -1,0 +1,15 @@
+{% extends "page.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg" style="max-width: 600px; margin: auto;">
+        <div class="card-body text-center">
+            <h2 class="card-title text-success mb-3">Payment Initiated!</h2>
+            <p class="card-text mb-4">
+               Your booking for the car "{{ booking.car.name }}" has been confirmed.
+                Your booking ID is {{ booking.id }}
+            </p>
+            <a href="{% url 'cardetails' %}" class="btn btn-secondary">Go Back</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Ride Hailing Bookings</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Car</th>
+                <th>Pickup Location</th>
+                <th>Dropoff Location</th>
+                <th>Pickup Date</th>
+                <th>Pickup Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ride in rides %}
+                <tr>
+                    <td>{{ ride.car.name }}</td>
+                    <td>{{ ride.pickup_location }}</td>
+                    <td>{{ ride.dropoff_location }}</td>
+                    <td>{{ ride.pickup_date }}</td>
+                    <td>{{ ride.pickup_time }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No ride hailing bookings found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

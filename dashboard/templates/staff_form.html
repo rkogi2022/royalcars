@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5 mb-5"> <!-- Added mb-5 for spacing at the bottom -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>{% if form.instance.pk %}Edit Staff{% else %}Add New Staff{% endif %}</h2>
+        <a href="{% url 'staff_list' %}" class="btn btn-primary">Back to List</a> <!-- Button on the right -->
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card p-4 shadow"> <!-- Adds a card and shadow for better styling -->
+            {{ form.as_p }}
+            <div class="text-end mt-3"> <!-- Aligns buttons to the right -->
+                <button type="submit" class="btn btn-success me-2">Save</button>
+                <a href="{% url 'staff_list' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

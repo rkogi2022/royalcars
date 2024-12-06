@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>ROYAL CARS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'styles/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Template Stylesheet -->
+    <link href="{% static 'styles/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/css/royaladmin.css' %}" rel="stylesheet">
+</head>
+<style>
+body {
+    background: url('/static/bg-banner.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333; /* Changed to dark text for better contrast */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8); /* Lighter transparent overlay */
+    border-radius: 10px;
+    padding: 30px 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Softer shadow */
+}
+
+h2 {
+    color: #ff9800; /* A warm, inviting header color */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.table thead th {
+    background-color: #f39c12;
+    color: white;
+}
+
+.table tbody tr {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly more opaque for readability */
+    color: #333; /* Darker text for better contrast */
+}
+
+.badge-success, .badge-danger {
+    font-size: 14px;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.list-group-item {
+    background-color: rgba(255, 255, 255, 0.95); /* Lighter background */
+    color: #333;
+    border: none; /* Remove borders for a cleaner look */
+}
+
+    </style>
+<body>
+
+
+<!--navbar-->
+{% include 'main_navbar.html' %}
+
+{% block content %}
+
+{% endblock %}
+
+<!--brands-->
+
+<div class="container-fluid" style="background-color: cadetblue; position: fixed; bottom: 0; left: 0; right: 0; width: 100%; padding: 0; margin: 0; z-index: 9999;">
+    <p class="mb-0 text-center" style="color: #fff; font-size: 16px;">
+        &copy; <a href="#" style="color: #ffd700;">Royal Cars Management System © {% now "Y" %}</a>. All Rights Reserved.
+    </p>
+    <p class="mb-0 text-center" style="color: #fff; font-size: 15px;">
+        Designed by <a href="#" style="color: #ffd700; font-weight: bold;">Rita Kogi</a>
+    </p>
+</div>
+
+
+
+    <!-- Footer End -->
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Add this script to include Bootstrap and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{% extends "page.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg" style="max-width: 600px; margin: auto;">
+        <div class="card-body text-center">
+            <h2 class="card-title text-danger mb-3">Payment Failed!</h2>
+            <p class="card-text mb-4">{{ message }}</p>
+            <div class="d-flex justify-content-around">
+                <a href="{% url 'book_car' car.id %}" class="btn btn-primary">Try Again</a>
+                <a href="{% url 'cardetails' %}" class="btn btn-secondary">Go Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

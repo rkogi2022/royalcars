@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+    <title>Delete Car</title>
+
+    <div style="
+        max-width: 500px;
+        margin: 100px auto;
+        padding: 40px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    ">
+        <h1 style="color: #dc3545; margin-bottom: 20px;">Are you sure you want to delete "{{ car.name }}"?</h1>
+        <form method="POST" style="margin-bottom: 20px;">
+            {% csrf_token %}
+            <button type="submit" style="
+                background-color: #dc3545;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                margin-right: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            ">Yes, delete</button>
+            <a href="{% url 'car_list' %}" style="
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #6c757d;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                font-size: 16px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            ">Cancel</a>
+        </form>
+    </div>
+{% endblock %}
