@@ -1,7 +1,7 @@
 {% extends "page.html" %}
 {% load static %}
 {% block content %}
-<div class="container mt-5" style="background-image: url('{% static 'img/driverbanner.jpg' %}'); background-size: cover; background-position: center; padding: 20px; min-height: 100vh;">
+<div class="container mt-5" style="background-image: url('{% static 'img/driverbanner.jpg' %}'); background-size: cover; background-position: center; min-height: 100vh;">
     <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="col-md-6">
             <div class="card shadow-lg" style="background-color: rgba(255, 255, 255, 0.8); border-radius: 8px;">
@@ -13,17 +13,31 @@
                         <!-- Pickup Location -->
                         <div class="form-group">
                             <label for="pickup_location">Pickup Location</label>
-                            <input type="text" id="pickup_location" name="pickup_location" class="form-control" placeholder="Enter pickup location" required>
-                            <input type="hidden" id="pickup_latitude" name="pickup_latitude">
-                            <input type="hidden" id="pickup_longitude" name="pickup_longitude">
+                            <div class="input-group">
+                                <input type="text" id="pickup_location" name="pickup_location" class="form-control" placeholder="Enter pickup location" required>
+                                <input type="hidden" id="pickup_latitude" name="pickup_latitude">
+                                <input type="hidden" id="pickup_longitude" name="pickup_longitude">
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="useCurrentLocation()">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Dropoff Location -->
                         <div class="form-group">
                             <label for="dropoff_location">Dropoff Location</label>
-                            <input type="text" id="dropoff_location" name="dropoff_location" class="form-control" placeholder="Enter dropoff location" required>
-                            <input type="hidden" id="dropoff_latitude" name="dropoff_latitude">
-                            <input type="hidden" id="dropoff_longitude" name="dropoff_longitude">
+                            <div class="input-group">
+                                <input type="text" id="dropoff_location" name="dropoff_location" class="form-control" placeholder="Enter dropoff location" required>
+                                <input type="hidden" id="dropoff_latitude" name="dropoff_latitude">
+                                <input type="hidden" id="dropoff_longitude" name="dropoff_longitude">
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="openDropoffMap()">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Pickup Date and Time -->
@@ -45,14 +59,12 @@
 </div>
 
 <!-- Include Google Maps JavaScript API -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWqJPV-qdTeVDp-wOKhyzXf4nmg9oFYIM&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbUwCvMnew57nothwUkx8ilnVmzA3KQZo&libraries=places"></script>
 <script>
-    let pickupAutocomplete, dropoffAutocomplete;
-
     function initAutocomplete() {
         // Initialize autocomplete for pickup location
         const pickupInput = document.getElementById('pickup_location');
-        pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput);
+        const pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput);
         pickupAutocomplete.addListener('place_changed', function () {
             const place = pickupAutocomplete.getPlace();
             if (place.geometry) {
@@ -63,7 +75,7 @@
 
         // Initialize autocomplete for dropoff location
         const dropoffInput = document.getElementById('dropoff_location');
-        dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput);
+        const dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput);
         dropoffAutocomplete.addListener('place_changed', function () {
             const place = dropoffAutocomplete.getPlace();
             if (place.geometry) {
@@ -73,7 +85,57 @@
         });
     }
 
-    // Load the autocomplete on window load
+    // Use current location for pickup
+    function useCurrentLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+
+                document.getElementById('pickup_latitude').value = lat;
+                document.getElementById('pickup_longitude').value = lng;
+
+                const geocoder = new google.maps.Geocoder();
+                const latlng = { lat, lng };
+                geocoder.geocode({ location: latlng }, function (results, status) {
+                    if (status === "OK" && results[0]) {
+                        document.getElementById('pickup_location').value = results[0].formatted_address;
+                    } else {
+                        alert("Unable to retrieve location.");
+                    }
+                });
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    // Open map for dropoff location
+    function openDropoffMap() {
+        const dropoffInput = document.getElementById('dropoff_location');
+        const map = new google.maps.Map(document.createElement('div'), {
+            zoom: 15,
+            center: { lat: -1.286389, lng: 36.817223 }, // Default to Nairobi
+        });
+
+        const autocomplete = new google.maps.places.Autocomplete(dropoffInput);
+        autocomplete.bindTo('bounds', map);
+
+        google.maps.event.addListener(map, 'click', function (event) {
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ location: event.latLng }, function (results, status) {
+                if (status === "OK" && results[0]) {
+                    dropoffInput.value = results[0].formatted_address;
+                    document.getElementById('dropoff_latitude').value = event.latLng.lat();
+                    document.getElementById('dropoff_longitude').value = event.latLng.lng();
+                }
+            });
+        });
+
+        alert("Click on the map to select your dropoff location!");
+    }
+
+    // Load the autocomplete functionality after the page loads
     window.onload = initAutocomplete;
 </script>
 {% endblock %}

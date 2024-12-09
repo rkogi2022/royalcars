@@ -1,12 +1,18 @@
 {% extends 'page.html' %}
 {% load static %}
 {% block content %}
-    <div class="container mt-5" style="background-image: url('{% static 'img/driverbanner.jpg' %}'); background-size: cover; background-position: center; padding: 20px;">
-        <h2>Payment Prompt Sent</h2>
-        <p>We have sent a payment prompt to your phone. Please enter your M-Pesa PIN to complete the booking deposit payment.</p>
-        <p>If you don't see the prompt, please check your network or cancel and try again.</p>
-        <p>Once you complete the payment, you will receive a confirmation.</p>
-        <p>Car: {{ car.name }}</p>
-        <a href="{% url 'cardetails' %}" class="btn btn-danger">Cancel Booking</a>
+<div class="container mt-5" style="background-image: url('{% static 'img/driverbanner.jpg' %}'); background-size: cover; background-position: center; padding: 20px;">
+    <div class="card shadow-lg mx-auto" style="max-width: 600px; background: rgba(255, 255, 255, 0.9);">
+        <div class="card-body">
+            <h2 class="card-title text-center text-success">Payment Prompt Sent</h2>
+            <p class="card-text">We have sent a payment prompt to your phone. Please enter your M-Pesa PIN to complete the booking deposit payment.</p>
+            <p class="card-text">If you don't see the prompt, please check your network or cancel and try again.</p>
+            <p class="card-text">Once you complete the payment, you will receive a confirmation.</p>
+            <p class="card-text"><strong>Car:</strong> {{ car.name }}</p>
+            <div class="text-center">
+                <a href="{% url 'cardetails' %}" class="btn btn-danger px-4">Cancel Booking</a>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}
