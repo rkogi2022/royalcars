@@ -3,8 +3,8 @@
 <div class="container-fluid position-relative nav-bar p-0">
     <div class="position-relative px-lg-5" style="z-index: 9;">
         <nav class="navbar navbar-expand-lg navbar-dark py-3 py-lg-0 pl-3 pl-lg-5" style="background-color: rgba(0, 0, 0, 0.6);">
-            <a href="" class="navbar-brand d-flex align-items-center">
-                <h1 class="text-uppercase text-warning mb-1">Royal Cars</h1>
+            <a href="{% url 'car_list' %}" class="navbar-brand d-flex align-items-center">
+                <img src="{% static 'img/logo.png' %}" alt="Royal Cars Logo" class="img-fluid" style="max-height: 75px;">
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
