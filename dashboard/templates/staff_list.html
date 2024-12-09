@@ -1,6 +1,24 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
+<style>
+    body {
+        background: url("{% static 'img/dashboard.jpg' %}") no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        font-size: 16px;  /* Adjust the base font size */
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.8); /* Light white background for readability */
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    table {
+        font-size: 18px; /* Increase font size of the table text */
+    }
+</style>
 <div class="container mt-5" style="bottom: 20px">
     <h2>Staff Records</h2>
     <a href="{% url 'add_staff' %}" class="btn btn-primary mb-3">Add New Staff</a>

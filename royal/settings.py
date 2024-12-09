@@ -140,6 +140,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your_email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your_password'
+
 # MPESA Configuration
 MPESA_ENVIRONMENT = 'sandbox'
 MPESA_CONSUMER_KEY = '06a0tIUGroIMkL3lQDbAxkTwAPXSaSfC8fH43nBlx6DLCYiV'

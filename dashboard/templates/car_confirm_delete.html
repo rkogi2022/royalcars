@@ -3,40 +3,42 @@
 {% block content %}
     <title>Delete Car</title>
 
-    <div style="
-        max-width: 500px;
-        margin: 100px auto;
-        padding: 40px;
-        background-color: #f8f9fa;
-        border: 1px solid #dee2e6;
-        border-radius: 8px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    ">
-        <h1 style="color: #dc3545; margin-bottom: 20px;">Are you sure you want to delete "{{ car.name }}"?</h1>
-        <form method="POST" style="margin-bottom: 20px;">
+    <style>
+        .formbody {
+    background-image: url("{% static 'img/forms.jpg' %}") ; /* Ensure the correct path to the background image */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; /* Ensure the page height covers the screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px; /* Adjust space below the form */
+}
+
+.form-container {
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%; /* Adjust the form width */
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+footer {
+    position: relative;
+    z-index: 10; /* Ensures footer stays on top */
+}
+
+</style>
+    <div class="formbody">
+        <div class="form-container">
+        <h1>Are you sure you want to delete "{{ car.name }}"?</h1>
+        <form method="POST">
             {% csrf_token %}
-            <button type="submit" style="
-                background-color: #dc3545;
-                color: white;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 16px;
-                margin-right: 10px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            ">Yes, delete</button>
-            <a href="{% url 'car_list' %}" style="
-                display: inline-block;
-                padding: 10px 20px;
-                background-color: #6c757d;
-                color: white;
-                text-decoration: none;
-                border-radius: 5px;
-                font-size: 16px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            ">Cancel</a>
+            <button type="submit">Yes, delete</button>
+            <a href="{% url 'car_list' %}">Cancel</a>
         </form>
     </div>
+    </div>
+
 {% endblock %}

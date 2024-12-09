@@ -1,15 +1,39 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-<div class="container mt-5 mb-5"> <!-- Added mb-5 for spacing at the bottom -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>{% if form.instance.pk %}Edit Staff{% else %}Add New Staff{% endif %}</h2>
-        <a href="{% url 'staff_list' %}" class="btn btn-primary">Back to List</a> <!-- Button on the right -->
-    </div>
+<style>
+    .formbody {
+    background-image: url("{% static 'img/forms.jpg' %}") ; /* Ensure the correct path to the background image */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; /* Ensure the page height covers the screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px; /* Adjust space below the form */
+}
 
+.form-container {
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%; /* Adjust the form width */
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+footer {
+    position: relative;
+    z-index: 10; /* Ensures footer stays on top */
+}
+
+</style>
+<div class="formbody">
+    <div class="form-container">
+        <h3 style="text-align: center">Edit Staff Details</h3>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="card p-4 shadow"> <!-- Adds a card and shadow for better styling -->
+        <div> <!-- Adds a card and shadow for better styling -->
             {{ form.as_p }}
             <div class="text-end mt-3"> <!-- Aligns buttons to the right -->
                 <button type="submit" class="btn btn-success me-2">Save</button>
@@ -18,4 +42,7 @@
         </div>
     </form>
 </div>
+    </div>
+</div>
+
 {% endblock %}

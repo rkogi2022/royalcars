@@ -1,5 +1,25 @@
 {% extends 'main.html' %}
+{% load static %}
 {% block content %}
+<style>
+    body {
+        background: url("{% static 'img/dashboard.jpg' %}") no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    table {
+        font-size: 18px; /* Increase font size of the table text */
+    }
+</style>
+
 <div class="container mt-5">
     <h2>Car Booking Records</h2>
     <table class="table table-striped">

@@ -3,7 +3,6 @@
     <div class="position-relative px-lg-5" style="z-index: 9;">
         <nav class="navbar navbar-expand-lg navbar-dark py-3 py-lg-0 pl-3 pl-lg-5" style="background-color: rgba(0, 0, 0, 0.6);">
             <a href="" class="navbar-brand d-flex align-items-center">
-                <img src="{% static 'bg-banner.jpg' %}" alt="Royal Cars" style="width: 50px; height: auto; border-radius: 50%; margin-right: 10px;">
                 <h1 class="text-uppercase text-warning mb-1">Royal Cars</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -15,7 +14,8 @@
                     <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                     <a href="{% url 'services' %}" class="nav-item nav-link">Services</a>
                     <a href="{% url 'cardetails' %}" class="nav-item nav-link">Catalogue</a>
-                    <a href="{% url 'team_view' %}" class="nav-item nav-link">The Team</a>
+                    <a href="{% url 'team_view' %}" class="nav-item nav-link">Our Team</a>
+                    <a href="{% url 'contact' %}" class="nav-item nav-link">Contact Us</a>
                     <a href="{% url 'login' %}" class="nav-item nav-link">
                         <i class="fas fa-sign-in-alt mr-3" style="color: #0a0a11"></i> Admin
                     </a>

@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 
 from carapp.forms import DriverApplicationForm
-from carapp.models import DriverApplication, CarBooking, CarPurchase, Newsletter, RideHailing
+from carapp.models import DriverApplication, CarBooking, CarPurchase, Newsletter, RideHailing, ContactMessage
 from dashboard.forms import CarForm, StaffForm
 from dashboard.models import Car, Staff
 
@@ -151,3 +151,7 @@ def move_to_staff(driver_application_id):
         driver_application.save()
         return staff_member
     return None
+
+def contact_messages_view(request):
+    messages = ContactMessage.objects.all()  # Fetch all contact messages
+    return render(request, 'contactmessages.html', {'messages': messages})

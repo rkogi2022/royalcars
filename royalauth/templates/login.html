@@ -1,48 +1,142 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
     {% load static %}
     <meta charset="utf-8">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-  </head>
-  <body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("{% static 'img/login.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        .center {
+            position: absolute;
+            left: 10%; /* Adjust as needed for positioning */
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .txt_field {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .txt_field input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            background: #f9f9f9;
+        }
+
+        .txt_field label {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            color: #aaa;
+            font-size: 14px;
+            pointer-events: none;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .txt_field input:focus + label,
+        .txt_field input:not(:placeholder-shown) + label {
+            top: -10px;
+            font-size: 12px;
+            color: #333;
+        }
+
+        .txt_field span {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        .txt_field input:focus ~ span {
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background: #555;
+        }
+
+        .signup_link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup_link a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup_link a:hover {
+            text-decoration: underline;
+        }
+
+        .signup_link p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
     <div class="center">
-      <h1>Login</h1>
-
-      {% if messages %}
-          {% for message in messages %}
-              {% if message.tags == 'error' %}
-                  <center><h4 style="color: firebrick;">{{message}}</h4></center>
-              {% else %}
-                  <center><h4 style="color: dodgerblue;">{{message}}</h4></center>
-              {% endif %}
-          {% endfor %}
-      {% endif %}
-        
-      <form method="POST">
-
-        {% csrf_token %}
-
-        <div class="txt_field">
-          <input type="text" required name="username">
-          <span></span>
-          <label>Username</label>
-        </div>
-
-        <div class="txt_field">
-          <input type="password" required name="password">
-          <span></span>
-          <label>Password</label>
-        </div>
-
-        <input type="submit" value="Login">
-        <div class="signup_link">
-          I don't have an Account! <a href="{% url 'register' %}">Signup</a>
-          <p>Forgot your Password? <a href="{% url 'forgot_password' %}">Reset Password</a></p>
-        </div>
-      </form>
+        <h1>Login</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="txt_field">
+                <input type="text" required name="username" placeholder=" ">
+                <span></span>
+                <label>Username</label>
+            </div>
+            <div class="txt_field">
+                <input type="password" required name="password" placeholder=" ">
+                <span></span>
+                <label>Password</label>
+            </div>
+            <input type="submit" value="Login">
+            <div class="signup_link">
+                I don't have an Account! <a href="{% url 'register' %}">Signup</a>
+                <p>Forgot your Password? <a href="{% url 'forgot-password' %}">Reset Password</a></p>
+            </div>
+        </form>
     </div>
-
-  </body>
+</body>
 </html>

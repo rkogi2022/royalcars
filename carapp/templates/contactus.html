@@ -1,68 +1,92 @@
 {% extends "base.html" %}
 {% load static %}
-    <!-- Contact Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <h1 class="display-1 text-primary text-center">06</h1>
-            <h1 class="display-4 text-uppercase text-center mb-5">Contact Us</h1>
-            <div class="row">
-                <div class="col-lg-7 mb-2">
-                    <div class="contact-form bg-light mb-4" style="padding: 30px;">
-                        <form>
-                            <div class="row">
-                                <div class="col-6 form-group">
-                                    <input type="text" class="form-control p-4" placeholder="Your Name" required="required">
-                                </div>
-                                <div class="col-6 form-group">
-                                    <input type="email" class="form-control p-4" placeholder="Your Email" required="required">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control p-4" placeholder="Subject" required="required">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control py-3 px-4" rows="5" placeholder="Message" required="required"></textarea>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
-                            </div>
-                        </form>
-                    </div>
+
+{% block content %}
+<!-- Contact Start -->
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <!-- Embedded Map Row -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="map-container" style="width: 100%; height: 450px;">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d127641.81376369808!2d36.800000000000004!3d-1.290278!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTcnMjUuMCJTIDM2wrA0OCcwMC4wIkU!5e0!3m2!1sen!2ske!4v1733725103232!5m2!1sen!2ske"
+                        width="100%"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                    ></iframe>
                 </div>
-                <div class="col-lg-5 mb-2">
-                    <div class="bg-secondary d-flex flex-column justify-content-center px-5 mb-4" style="height: 435px;">
-                        <div class="d-flex mb-3">
-                            <i class="fa fa-2x fa-map-marker-alt text-primary flex-shrink-0 mr-3"></i>
-                            <div class="mt-n1">
-                                <h5 class="text-light">Head Office</h5>
-                                <p>123 Street, New York, USA</p>
+            </div>
+        </div>
+
+        <!-- Section Title -->
+        <h1 class="display-4 text-uppercase text-center mb-5">Contact Us</h1>
+
+        <!-- Contact Form and Details -->
+        <div class="row">
+            <div class="col-lg-7 mb-2">
+                <div class="contact-form bg-light mb-4" style="padding: 30px;">
+                   <form method="POST" action="{% url 'contact' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-6 form-group">
+                                {{ form.name }}
+                            </div>
+                            <div class="col-6 form-group">
+                                {{ form.email }}
                             </div>
                         </div>
-                        <div class="d-flex mb-3">
-                            <i class="fa fa-2x fa-map-marker-alt text-primary flex-shrink-0 mr-3"></i>
-                            <div class="mt-n1">
-                                <h5 class="text-light">Branch Office</h5>
-                                <p>123 Street, New York, USA</p>
-                            </div>
+                        <div class="form-group">
+                            {{ form.subject }}
                         </div>
-                        <div class="d-flex mb-3">
-                            <i class="fa fa-2x fa-envelope-open text-primary flex-shrink-0 mr-3"></i>
-                            <div class="mt-n1">
-                                <h5 class="text-light">Customer Service</h5>
-                                <p>customer@example.com</p>
-                            </div>
+                        <div class="form-group">
+                            {{ form.message }}
                         </div>
-                        <div class="d-flex">
-                            <i class="fa fa-2x fa-envelope-open text-primary flex-shrink-0 mr-3"></i>
-                            <div class="mt-n1">
-                                <h5 class="text-light">Return & Refund</h5>
-                                <p class="m-0">refund@example.com</p>
-                            </div>
+                        <div>
+                            <button class="btn btn-warning py-3 px-5" type="submit">Send Message</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="col-lg-5 mb-2">
+                <div class="bg-secondary d-flex flex-column justify-content-center px-5 mb-4" style="height: 435px;">
+                    <div class="d-flex mb-3">
+                        <i class="fa fa-2x fa-map-marker-alt text-warning flex-shrink-0 mr-3"></i>
+                        <div class="mt-n1">
+                            <h5 class="text-light">Head Office</h5>
+                            <p>Hurlingham, Nairobi</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <i class="fa fa-2x fa-map-marker-alt text-warning flex-shrink-0 mr-3"></i>
+                        <div class="mt-n1">
+                            <h5 class="text-light">Branch Office</h5>
+                            <p>Kiambu Road, Nairobi</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <i class="fa fa-2x fa-envelope-open text-warning flex-shrink-0 mr-3"></i>
+                        <div class="mt-n1">
+                            <h5 class="text-light">Customer Service</h5>
+                            <p>customer@royalcars.com</p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <i class="fa fa-2x fa-envelope-open text-warning flex-shrink-0 mr-3"></i>
+                        <div class="mt-n1">
+                            <h5 class="text-light">Return & Refund</h5>
+                            <p class="m-0">refund@royalcars.com</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Contact End -->
-{% block content %}
+</div>
+<!-- Contact End -->
+
+
+{% endblock %}

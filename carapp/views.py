@@ -10,7 +10,7 @@ from django_daraja.mpesa.core import MpesaClient
 
 import logging, json
 
-from carapp.forms import NewsletterForm, DriverApplicationForm, CarPurchaseForm
+from carapp.forms import NewsletterForm, DriverApplicationForm, CarPurchaseForm, ContactForm
 from carapp.models import CarBooking, RideHailing
 from dashboard.models import Car, Staff
 from royal import settings
@@ -238,7 +238,7 @@ def book_car(request, car_id):
             booking.status = 'Failed'
             booking.transaction_time = timezone.now()
             booking.save()
-            return render(request, 'payment_failed.html', {
+            return render(request, 'payment_prompt_sent.html', {
                 'message': response.error_message,
                 'car': car
             })
@@ -318,3 +318,15 @@ def team_view(request):
     context= {'staff_members': staff_members}
     template_name = 'team.html'
     return render(request, template_name, context)
+
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your message has been sent successfully!")
+            return redirect('index')
+    else:
+        form = ContactForm()
+
+    return render(request, 'contactus.html', {'form': form})

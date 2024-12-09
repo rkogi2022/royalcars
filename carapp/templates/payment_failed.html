@@ -1,6 +1,7 @@
 {% extends "page.html" %}
+{% load static %}
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-5" style="background-image: url('{% static 'img/driverbanner.jpg' %}'); background-size: cover; background-position: center; padding: 20px;">
     <div class="card shadow-lg" style="max-width: 600px; margin: auto;">
         <div class="card-body text-center">
             <h2 class="card-title text-danger mb-3">Payment Failed!</h2>
